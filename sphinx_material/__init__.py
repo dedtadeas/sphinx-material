@@ -33,7 +33,7 @@ def setup(app):
     app.connect("build-finished", reformat_pages)
     app.connect("build-finished", minify_css)
     app.connect("builder-inited", update_html_context)
-    app.connect("config-inited", update_table_classes)
+    app.connect("config-inited", update_table_classes(app, app.config)) # function update_table_classes takes two arguments... tested.. working
     manager = Manager()
     site_pages = manager.list()
     sitemap_links = manager.list()
